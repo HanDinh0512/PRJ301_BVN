@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>handg</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>123</param-value>
+    </context-param>
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>FilterController.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/auth/*</url-pattern>
+    </filter-mapping>
+    <listener>
+        <description>RequestListener</description>
+        <listener-class>EventListenerController.CountListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>FilterController.LoginController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewCountServlet</servlet-name>
+        <servlet-class>EventListenerController.ViewCountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCountServlet</servlet-name>
+        <url-pattern>/pageview</url-pattern>
+    </servlet-mapping>
+</web-app>
